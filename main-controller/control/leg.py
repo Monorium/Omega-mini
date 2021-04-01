@@ -30,6 +30,20 @@ class LegController_I2C(LegController):
         self.wire.write_block_data(self.addr, 0, controls)
 
 
+class LegControllerManager():
+    def __init__(self):
+        self.legs = [LegController_I2C(LegController_I2C.I2C_ARRD_1), LegController_I2C(LegController_I2C.I2C_ARRD_2)]
+
+    def move_leg(self, leg_id, joint_id, angle):
+        if leg_id == 10 or 11 or 12:
+            self.legs[0].control((joint_id, angle))
+        else:
+            self.legs[1].control((joint_id, angle))
+
+
+controller = LegControllerManager()
+
+
 def get_args():
     def type_comma(x): return list(map(int, x.split(',')))
     parser = argparse.ArgumentParser(description='Servo controller')
