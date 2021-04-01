@@ -10,3 +10,8 @@ app.include_router(route_legs.router)
 @app.get("/", include_in_schema=False)
 async def read_root():
     return {"Hello": "World"}
+
+
+@app.get("/health")
+async def check_health():
+    return {'result': 'ok'}

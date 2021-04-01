@@ -20,7 +20,7 @@ class LegController_I2C(LegController):
         self.addr = addr
 
     def control(self, angle: tuple):
-        self.wire.write_block_data(self.addr, 0, [angle(0), angle(1)])
+        self.wire.write_block_data(self.addr, 0, [angle[0], angle[1]])
 
     def control_list(self, angles: list):
         controls = []
