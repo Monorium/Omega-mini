@@ -1,0 +1,23 @@
+version: 1
+
+formatters:
+  customFormatter:
+    format: "[%(asctime)s] [%(levelname)s] [%(name)s] [%(funcName)s] [%(filename)s:%(lineno)d] %(message)s"
+
+handlers:
+  consoleHandler:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: customFormatter
+    stream: ext://sys.stdout
+
+loggers:
+  uvicorn,error:
+    level: WARNING
+    handlers: [consoleHandler]
+
+root:
+  level: DEBUG
+  handlers: [consoleHandler]
+
+disable_existing_loggers: False

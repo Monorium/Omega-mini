@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import config
 from smbus2 import SMBus
+from logging import getLogger
 
 
 class LegController():
@@ -13,15 +14,18 @@ class LegController():
 
 class LegController_I2C(LegController):
     def __init__(self, addr):
+        getLogger().debug('start. addr={}'.format(addr))
         super().__init__()
         self.__wire = SMBus(1)
         self.__addr = addr
 
     def move_joints(self, angles: list):
+        getLogger().debug('start. angles={}'.format(angles))
         controls = []
         for (joint_id, angle) in angles:
             controls.append(joint_id)
             controls.append(angle)
+        getLogger().debug('controls={}'.format(controls))
         self.__wire.write_block_data(self.__addr, 0, controls)
 
 
@@ -30,10 +34,10 @@ class LegController_dummy(LegController_I2C):
         self.__addr = addr
 
     def move_joints(self, angles: list):
-        print('# LegController_dummy')
+        getLogger().debug('start. angles={}'.format(angles))
         controls = []
         for (joint_id, angle) in angles:
-            print('addr={}, joint_id={}, angle={}'.format(self.__addr, joint_id, angle))
+            getLogger().debug('addr={}, joint_id={}, angle={}'.format(self.__addr, joint_id, angle))
 
 
 class LegControllerManager():
