@@ -2,7 +2,7 @@
 from typing import List, Optional
 from fastapi.routing import APIRouter
 from app.schemas.leg import LegJoint, Leg, LEG_POSITION
-from control.leg import controller as leg_controller
+from control.leg import leg_controller
 
 router = APIRouter(prefix='/legs')
 
@@ -43,7 +43,10 @@ async def get_leg_status(position: int, joint_id: Optional[int] = -1):
 
 @ router.post("/", response_model=List[Leg])
 async def control_legs(legs: List[Leg]):
+    move_datas = []
     for leg in legs:
         for joint in leg.joints:
-            leg_controller.move_leg(leg.position, joint.id, joint.angle)
+            move_datas.append((leg.position, joint.id, joint.angle))
+    if len(move_datas):
+        leg_controller.move_legs(move_datas)
     return await get_all_leg_status()

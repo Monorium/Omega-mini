@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import argparse
+import config
 from smbus2 import SMBus
 
 
@@ -7,68 +7,67 @@ class LegController():
     def __init__(self):
         pass
 
-    def set_angle(self, id, angle):
+    def move_joints(self, angles: list):
         pass
 
 
 class LegController_I2C(LegController):
-    I2C_ARRD_1 = 0x8
-    I2C_ARRD_2 = 0x9
-
     def __init__(self, addr):
-        self.wire = SMBus(1)
-        self.addr = addr
+        super().__init__()
+        self.__wire = SMBus(1)
+        self.__addr = addr
 
-    def control(self, angle: tuple):
-        self.wire.write_block_data(self.addr, 0, [angle[0], angle[1]])
-
-    def control_list(self, angles: list):
+    def move_joints(self, angles: list):
         controls = []
-        for angle in angles:
-            controls.append(angle[0])
-            controls.append(angle[1])
-        self.wire.write_block_data(self.addr, 0, controls)
+        for (joint_id, angle) in angles:
+            controls.append(joint_id)
+            controls.append(angle)
+        self.__wire.write_block_data(self.__addr, 0, controls)
+
+
+class LegController_dummy(LegController_I2C):
+    def __init__(self, addr):
+        self.__addr = addr
+
+    def move_joints(self, angles: list):
+        print('# LegController_dummy')
+        controls = []
+        for (joint_id, angle) in angles:
+            print('addr={}, joint_id={}, angle={}'.format(self.__addr, joint_id, angle))
 
 
 class LegControllerManager():
     def __init__(self):
-        self.legs = [LegController_I2C(LegController_I2C.I2C_ARRD_1), LegController_I2C(LegController_I2C.I2C_ARRD_2)]
-
-    def move_leg(self, leg_id, joint_id, angle):
-        if leg_id == 10 or 11 or 12:
-            self.legs[0].control((joint_id, angle))
+        if config.IS_DEBUG_MODE:
+            self.__leg1 = LegController_dummy(config.LEG_CONTROLLER.I2C_ADDR[0])
+            self.__leg2 = LegController_dummy(config.LEG_CONTROLLER.I2C_ADDR[1])
         else:
-            self.legs[1].control((joint_id, angle))
+            self.__leg1 = LegController_I2C(config.LEG_CONTROLLER.I2C_ADDR[0])
+            self.__leg2 = LegController_I2C(config.LEG_CONTROLLER.I2C_ADDR[1])
+
+        self.__leg_ids1 = config.LEG_CONTROLLER.LEG_IDS[0]
+        self.__leg_ids2 = config.LEG_CONTROLLER.LEG_IDS[1]
+
+    def move_legs(self, legs: list):
+        angles1 = []
+        angles2 = []
+        for (leg_id, joint_id, angle) in legs:
+            if leg_id in self.__leg_ids1:
+                angles1.append((
+                    3 * self.__leg_ids1.index(leg_id) + joint_id,
+                    angle
+                ))
+
+            if leg_id in self.__leg_ids2:
+                angles2.append((
+                    3 * self.__leg_ids2.index(leg_id) + joint_id,
+                    angle
+                ))
+
+        if len(angles1):
+            self.__leg1.move_joints(angles1)
+        if len(angles2):
+            self.__leg2.move_joints(angles2)
 
 
-controller = LegControllerManager()
-
-
-def get_args():
-    def type_comma(x): return list(map(int, x.split(',')))
-    parser = argparse.ArgumentParser(description='Servo controller')
-    #parser.add_argument('id', help='0-8')
-    #parser.add_argument('angles', help='0-180')
-    parser.add_argument('angles', type=type_comma, help='90,90,90,90,...')
-    return parser.parse_args()
-
-
-if __name__ == '__main__':
-    args = get_args()
-    servo1 = LegController_I2C(LegController_I2C.I2C_ARRD_1)
-    servo2 = LegController_I2C(LegController_I2C.I2C_ARRD_2)
-    angles1, angles2 = [], []
-    id = 0
-    for angle in args.angles:
-        if id < 9:
-            angles1.append((id, angle))
-        else:
-            angles2.append((id - 9, angle))
-        id += 1
-        if id >= 18:
-            break
-
-    if len(angles1) > 0:
-        servo1.control_list(angles1)
-    if len(angles2) > 0:
-        servo2.control_list(angles2)
+leg_controller = LegControllerManager()
