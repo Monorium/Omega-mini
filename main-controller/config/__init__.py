@@ -14,13 +14,13 @@ class LegControllerConfig():
         config.read(LegControllerConfig.__CONFIG_FILE_NAME, encoding='utf-8')
 
         self.I2C_ADDR = [
-            config['Controller1']['I2CAddr'],
-            config['Controller2']['I2CAddr']
+            int(config['Controller1']['I2CAddr'], 16),
+            int(config['Controller2']['I2CAddr'], 16),
         ]
 
         self.LEG_IDS = [
             json.loads(config['Controller1']['LegIds']),
-            json.loads(config['Controller2']['LegIds'])
+            json.loads(config['Controller2']['LegIds']),
         ]
 
 
