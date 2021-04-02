@@ -46,4 +46,4 @@ async def control_legs(legs: List[Leg]):
     for leg in legs:
         for joint in leg.joints:
             leg_controller.move_leg(leg.position, joint.id, joint.angle)
-    return get_all_leg_status()
+    return await get_all_leg_status()
