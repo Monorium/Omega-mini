@@ -3,50 +3,37 @@ from typing import List, Optional
 from fastapi.routing import APIRouter
 from app.schemas.leg import LegJoint, Leg, LEG_POSITION
 from control.leg import leg_controller
+from data import leg_manager
+from data.leg import LegStatus, LegJointStatus
 
 router = APIRouter(prefix='/legs')
 
 
 @router.get("/", response_model=List[Leg])
 async def get_all_leg_status():
-    return [
-        await get_leg_status(LEG_POSITION.LEFT_FRONT),
-        await get_leg_status(LEG_POSITION.LEFT_CENTER),
-        await get_leg_status(LEG_POSITION.LEFT_REAR),
-        await get_leg_status(LEG_POSITION.RIGHT_FRONT),
-        await get_leg_status(LEG_POSITION.RIGHT_CENTER),
-        await get_leg_status(LEG_POSITION.RIGHT_REAR),
-    ]
+    return leg_manager.to_json()
 
 
 @router.get("/{position}", response_model=Leg)
 async def get_leg_status(position: int, joint_id: Optional[int] = -1):
-    leg = None
-    if joint_id == 0:
-        leg = Leg.to_json(position, [LegJoint.to_json(joint_id, 60)])
-    elif joint_id == 1:
-        leg = Leg.to_json(position, [LegJoint.to_json(joint_id, 90)])
-    elif joint_id == 2:
-        leg = Leg.to_json(position, [LegJoint.to_json(joint_id, 10)])
-    else:
-        leg = Leg.to_json(
-            position,
-            [
-                LegJoint.to_json(0, 60),
-                LegJoint.to_json(1, 90),
-                LegJoint.to_json(2, 10),
-            ]
-        )
-
-    return leg
+    return leg_manager.legs.get(position).to_json()
 
 
 @ router.post("/", response_model=List[Leg])
 async def control_legs(legs: List[Leg]):
     move_datas = []
     for leg in legs:
+        leg_status = LegStatus(leg.position)
+        leg_status.joints = []
+
         for joint in leg.joints:
             move_datas.append((leg.position, joint.id, joint.angle))
+            joint_status = LegJointStatus(joint.id)
+            joint_status.angle = joint.angle
+            leg_status.joints.append(joint_status)
+
+        leg_manager.update_status(leg_status)
     if len(move_datas):
         leg_controller.move_legs(move_datas)
+
     return await get_all_leg_status()
