@@ -25,7 +25,7 @@ class LegController_I2C(LegController):
         for (joint_id, angle) in angles:
             controls.append(joint_id)
             controls.append(angle)
-        logger.debug('controls={}'.format(controls))
+        logger.debug('I2C address={}, controls={}'.format(self.__addr, controls))
         self.__wire.write_block_data(self.__addr, 0, controls)
 
 
