@@ -12,9 +12,17 @@ handlers:
     stream: ext://sys.stdout
 
 loggers:
-  uvicorn,error:
+  omega.controller:
+    level: DEBUG
+
+  uvicorn:
+    level: INFO
+
+  uvicorn.error:
     level: WARNING
-    handlers: [consoleHandler]
+
+  uvicorn.access:
+    level: INFO
 
 root:
   level: DEBUG
