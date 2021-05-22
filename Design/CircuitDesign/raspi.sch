@@ -115,11 +115,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 2550 5850 2550
 Wire Wire Line
-	5850 2550 5850 3050
-Wire Wire Line
 	6250 2650 5950 2650
-Wire Wire Line
-	5950 2650 5950 3150
 Wire Wire Line
 	7350 3000 7350 3150
 Wire Wire Line
@@ -136,39 +132,38 @@ Wire Wire Line
 	7350 2450 7350 2700
 Text GLabel 7900 3300 0    50   Output ~ 0
 MOSFET(D)
-Text GLabel 4800 2650 0    50   BiDi ~ 0
-SCL
 Text GLabel 4800 2550 0    50   BiDi ~ 0
+SCL
+Text GLabel 4800 2650 0    50   BiDi ~ 0
 SDA
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x08_Female J?
 U 1 1 60DA6148
 P 8550 2900
 AR Path="/60DA6148" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60DA6148" Ref="J?"  Part="1" 
 AR Path="/60A36862/60DA6148" Ref="J5"  Part="1" 
 F 0 "J5" H 8578 2926 50  0000 L CNN
-F 1 "Female_Long_1x9" H 8578 2835 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 8550 2900 50  0001 C CNN
+F 1 "Female_Long_1x8" H 8578 2835 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 8550 2900 50  0001 C CNN
 F 3 "~" H 8550 2900 50  0001 C CNN
 	1    8550 2900
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x10_Female J?
 U 1 1 60DAD60B
 P 8550 3900
 AR Path="/60DAD60B" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60DAD60B" Ref="J?"  Part="1" 
 AR Path="/60A36862/60DAD60B" Ref="J6"  Part="1" 
 F 0 "J6" H 8578 3926 50  0000 L CNN
-F 1 "Female_Long_1x9" H 8578 3835 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 8550 3900 50  0001 C CNN
+F 1 "Female_Long_1x10" H 8578 3835 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Vertical" H 8550 3900 50  0001 C CNN
 F 3 "~" H 8550 3900 50  0001 C CNN
 	1    8550 3900
 	1    0    0    -1  
 $EndComp
-NoConn ~ 8350 2500
 NoConn ~ 8350 2600
 NoConn ~ 8350 2700
 NoConn ~ 8350 2800
@@ -199,37 +194,42 @@ Wire Wire Line
 	8350 3300 8100 3300
 Connection ~ 8100 3300
 Wire Wire Line
-	4800 3150 5100 3150
-Wire Wire Line
-	4800 3050 5000 3050
-Wire Wire Line
-	5000 2650 5000 3050
-Connection ~ 5000 3050
-Connection ~ 5100 3150
-Wire Wire Line
-	5100 2550 5100 3150
-Wire Wire Line
-	5000 3050 5550 3050
-Wire Wire Line
-	5100 3150 5250 3150
-Connection ~ 5250 3150
-Wire Wire Line
 	5250 2900 5250 3150
 Wire Wire Line
-	5250 3150 5950 3150
-Wire Wire Line
 	5550 2900 5550 3050
+Connection ~ 8150 4400
+Wire Wire Line
+	8350 4400 8150 4400
+Wire Wire Line
+	7900 4400 8150 4400
+Text GLabel 7900 4400 0    50   Input ~ 0
++5V
+NoConn ~ 8350 4200
+NoConn ~ 8350 4300
+Wire Wire Line
+	8150 2450 8150 4400
+Wire Wire Line
+	5100 2550 5100 3050
+Wire Wire Line
+	5000 2650 5000 3150
+Wire Wire Line
+	5850 3150 5250 3150
+Wire Wire Line
+	5850 2550 5850 3150
+Connection ~ 5000 3150
+Wire Wire Line
+	5000 3150 4800 3150
+Connection ~ 5250 3150
+Wire Wire Line
+	5250 3150 5000 3150
+Wire Wire Line
+	5950 2650 5950 3050
+Wire Wire Line
+	5950 3050 5550 3050
+Connection ~ 5100 3050
+Wire Wire Line
+	5100 3050 4800 3050
 Connection ~ 5550 3050
 Wire Wire Line
-	5550 3050 5850 3050
-Connection ~ 8150 4300
-Wire Wire Line
-	8350 4300 8150 4300
-Wire Wire Line
-	7900 4300 8150 4300
-Text GLabel 7900 4300 0    50   Input ~ 0
-+5V
-Wire Wire Line
-	8150 2450 8150 4300
-NoConn ~ 8350 4200
+	5550 3050 5100 3050
 $EndSCHEMATC

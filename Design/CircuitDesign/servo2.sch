@@ -387,18 +387,18 @@ Wire Wire Line
 NoConn ~ 3750 4900
 NoConn ~ 3750 4800
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x10_Female J?
 U 1 1 60DE6425
-P 3950 5200
+P 3950 5100
 AR Path="/60DE6425" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60DE6425" Ref="J?"  Part="1" 
 AR Path="/60A36862/60DE6425" Ref="J?"  Part="1" 
 AR Path="/60C0B142/60DE6425" Ref="J12"  Part="1" 
-F 0 "J12" H 3978 5226 50  0000 L CNN
-F 1 "Female_Long_1x9" H 3978 5135 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 3950 5200 50  0001 C CNN
-F 3 "~" H 3950 5200 50  0001 C CNN
-	1    3950 5200
+F 0 "J12" H 3978 5126 50  0000 L CNN
+F 1 "Female_Long_1x10" H 3978 5035 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Vertical" H 3950 5100 50  0001 C CNN
+F 3 "~" H 3950 5100 50  0001 C CNN
+	1    3950 5100
 	1    0    0    -1  
 $EndComp
 Text Label 3450 5500 0    50   ~ 0
@@ -410,8 +410,6 @@ Entry Wire Line
 Entry Wire Line
 	3300 4250 3400 4350
 Entry Wire Line
-	3300 4450 3400 4550
-Entry Wire Line
 	3300 3600 3400 3700
 Entry Wire Line
 	3300 4350 3400 4450
@@ -421,10 +419,6 @@ Text Label 3450 4350 0    50   ~ 0
 SIG16
 Wire Wire Line
 	3400 4350 3750 4350
-Text Label 3450 4550 0    50   ~ 0
-SIG13
-Wire Wire Line
-	3400 4550 3750 4550
 Text Label 3450 3700 0    50   ~ 0
 SIG15
 Wire Wire Line
@@ -438,17 +432,17 @@ SIG12
 Wire Wire Line
 	3400 5100 3750 5100
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x08_Female J?
 U 1 1 60C1969C
-P 3950 4250
+P 3950 4150
 AR Path="/60C1969C" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60C1969C" Ref="J?"  Part="1" 
 AR Path="/60C0B142/60C1969C" Ref="J11"  Part="1" 
-F 0 "J11" H 3978 4276 50  0000 L CNN
-F 1 "Female_Long_1x9" H 3978 4185 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 3950 4250 50  0001 C CNN
-F 3 "~" H 3950 4250 50  0001 C CNN
-	1    3950 4250
+F 0 "J11" H 3978 4176 50  0000 L CNN
+F 1 "Female_Long_1x8" H 3978 4085 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 3950 4150 50  0001 C CNN
+F 3 "~" H 3950 4150 50  0001 C CNN
+	1    3950 4150
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3750 3400
@@ -466,12 +460,6 @@ SIG11
 Entry Wire Line
 	3300 5100 3400 5200
 NoConn ~ 3750 5000
-Text Label 3450 4650 0    50   ~ 0
-MOSFET
-Wire Wire Line
-	3400 4650 3750 4650
-Entry Wire Line
-	3300 4550 3400 4650
 Wire Wire Line
 	3400 4250 3750 4250
 Text Label 3450 4250 0    50   ~ 0
@@ -489,6 +477,18 @@ Text Label 3450 4150 0    50   ~ 0
 SIG18
 NoConn ~ 3750 5400
 NoConn ~ 3750 5600
+Entry Wire Line
+	3300 4450 3400 4550
+Wire Wire Line
+	3400 4700 3750 4700
+Text Label 3450 4700 0    50   ~ 0
+SIG13
+Entry Wire Line
+	3300 4600 3400 4700
+Wire Wire Line
+	3400 4550 3750 4550
+Text Label 3450 4550 0    50   ~ 0
+MOSFET
 Wire Bus Line
 	8200 2600 8200 4550
 Wire Bus Line

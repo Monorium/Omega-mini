@@ -542,14 +542,14 @@ F 3 "~" H 9700 3150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x09_Male J2
+L Connector:Conn_01x08_Male J2
 U 1 1 60CB57FC
-P 9700 4100
-F 0 "J2" H 9672 4124 50  0000 R CNN
-F 1 "Male_Long_1x9" H 9672 4033 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical" H 9700 4100 50  0001 C CNN
-F 3 "~" H 9700 4100 50  0001 C CNN
-	1    9700 4100
+P 9700 4000
+F 0 "J2" H 9672 4024 50  0000 R CNN
+F 1 "Male_Long_1x8" H 9672 3933 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 9700 4000 50  0001 C CNN
+F 3 "~" H 9700 4000 50  0001 C CNN
+	1    9700 4000
 	-1   0    0    -1  
 $EndComp
 Text GLabel 9150 2950 0    50   BiDi ~ 0
@@ -599,18 +599,18 @@ Wire Wire Line
 Wire Wire Line
 	9150 4300 9500 4300
 Wire Wire Line
-	9500 4400 9150 4400
+	9500 4650 9150 4650
 Wire Wire Line
-	9150 4500 9500 4500
+	9150 4400 9500 4400
 $Comp
-L Connector:Conn_01x09_Male J3
+L Connector:Conn_01x10_Male J3
 U 1 1 60D5A54F
-P 9700 5150
-F 0 "J3" H 9672 5174 50  0000 R CNN
-F 1 "Male_Long_1x9" H 9672 5083 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical" H 9700 5150 50  0001 C CNN
-F 3 "~" H 9700 5150 50  0001 C CNN
-	1    9700 5150
+P 9700 5050
+F 0 "J3" H 9672 5074 50  0000 R CNN
+F 1 "Male_Long_1x10" H 9672 4983 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical" H 9700 5050 50  0001 C CNN
+F 3 "~" H 9700 5050 50  0001 C CNN
+	1    9700 5050
 	-1   0    0    -1  
 $EndComp
 Text GLabel 9150 5250 0    50   Input ~ 0
@@ -619,7 +619,7 @@ Text GLabel 9150 5150 0    50   Input ~ 0
 SIG11
 Text GLabel 9150 5050 0    50   Input ~ 0
 SIG12
-Text GLabel 9150 4400 0    50   Input ~ 0
+Text GLabel 9150 4650 0    50   Input ~ 0
 SIG13
 Text GLabel 9150 4300 0    50   Input ~ 0
 SIG14
@@ -651,7 +651,7 @@ Wire Wire Line
 	9150 5550 9500 5550
 Wire Wire Line
 	9500 3250 9150 3250
-Text GLabel 9150 4500 0    50   Output ~ 0
+Text GLabel 9150 4400 0    50   Output ~ 0
 MOSFET(D)
 Text GLabel 9150 5450 0    50   Input ~ 0
 +6V6

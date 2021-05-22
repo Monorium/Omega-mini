@@ -320,16 +320,16 @@ Wire Wire Line
 Text GLabel 2850 2600 0    50   Input ~ 0
 +6V6
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x10_Female J?
 U 1 1 60CCBA97
-P 3950 5200
+P 3950 5100
 AR Path="/60CCBA97" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60CCBA97" Ref="J9"  Part="1" 
-F 0 "J9" H 3978 5226 50  0000 L CNN
-F 1 "Female_Long_1x9" H 3978 5135 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 3950 5200 50  0001 C CNN
-F 3 "~" H 3950 5200 50  0001 C CNN
-	1    3950 5200
+F 0 "J9" H 3978 5126 50  0000 L CNN
+F 1 "Female_Long_1x10" H 3978 5035 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Vertical" H 3950 5100 50  0001 C CNN
+F 3 "~" H 3950 5100 50  0001 C CNN
+	1    3950 5100
 	1    0    0    -1  
 $EndComp
 Text GLabel 2850 2850 0    50   Input ~ 0
@@ -430,17 +430,17 @@ Connection ~ 6600 2600
 Wire Bus Line
 	6600 2600 5000 2600
 $Comp
-L Connector:Conn_01x09_Female J?
+L Connector:Conn_01x08_Female J?
 U 1 1 60DDFB65
-P 3950 4250
+P 3950 4150
 AR Path="/60DDFB65" Ref="J?"  Part="1" 
 AR Path="/60B1A4B1/60DDFB65" Ref="J8"  Part="1" 
 AR Path="/60A36862/60DDFB65" Ref="J?"  Part="1" 
-F 0 "J8" H 3978 4276 50  0000 L CNN
-F 1 "Female_Long_1x9" H 3978 4185 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical" H 3950 4250 50  0001 C CNN
-F 3 "~" H 3950 4250 50  0001 C CNN
-	1    3950 4250
+F 0 "J8" H 3978 4176 50  0000 L CNN
+F 1 "Female_Long_1x8" H 3978 4085 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 3950 4150 50  0001 C CNN
+F 3 "~" H 3950 4150 50  0001 C CNN
+	1    3950 4150
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3750 4150
@@ -450,7 +450,6 @@ Wire Wire Line
 	3400 3600 3750 3600
 NoConn ~ 3750 3700
 NoConn ~ 3750 4450
-NoConn ~ 3750 4550
 Entry Wire Line
 	3300 3850 3400 3950
 Text Label 3450 3950 0    50   ~ 0
@@ -462,12 +461,12 @@ NoConn ~ 3750 3300
 NoConn ~ 3750 5100
 NoConn ~ 3750 5200
 NoConn ~ 3750 5300
-Text Label 3450 4650 0    50   ~ 0
+Text Label 3450 4550 0    50   ~ 0
 MOSFET
 Wire Wire Line
-	3400 4650 3750 4650
+	3400 4550 3750 4550
 Entry Wire Line
-	3300 4550 3400 4650
+	3300 4450 3400 4550
 Wire Wire Line
 	3400 5500 3750 5500
 Text Label 3450 5500 0    50   ~ 0
@@ -476,6 +475,7 @@ Entry Wire Line
 	3300 5400 3400 5500
 NoConn ~ 3750 5400
 NoConn ~ 3750 5600
+NoConn ~ 3750 4700
 Wire Bus Line
 	8200 2600 8200 4550
 Wire Bus Line
